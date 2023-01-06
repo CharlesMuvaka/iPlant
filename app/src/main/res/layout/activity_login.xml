@@ -124,7 +124,7 @@ tools:context=".LoginActivity">
             app:layout_constraintTop_toBottomOf="@id/location"
             app:layout_constraintStart_toStartOf="@id/location"
             app:layout_constraintEnd_toEndOf="@id/location"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@id/forgot"/>
 
         <TextView
             android:id="@+id/forgot"
