@@ -43,9 +43,10 @@ public class VendorFragment extends Fragment {
         // Inflate the layout for this fragment
         bind = FragmentVendorBinding.inflate(getLayoutInflater());
         bind.vendorName.setText(vendor.getName());
-        bind.vendorEmail.setText(vendor.getUserEmail());
-        bind.vendorLocation.setText(vendor.getLocation());
-        bind.vendorPhone.setText(vendor.getPhoneNumber());
+        bind.vendorEmail.setText("Email: " + vendor.getUserEmail());
+        bind.vendorLocation.setText("Location: "+ vendor.getLocation());
+        bind.vendorPhone.setText("Phone: "+ vendor.getPhoneNumber());
+//        bind.vendorWebsite.setText("Website: " + vendor.);
         return bind.getRoot();
     }
 }
