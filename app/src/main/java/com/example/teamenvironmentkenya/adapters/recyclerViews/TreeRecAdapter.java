@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.teamenvironmentkenya.R;
 import com.example.teamenvironmentkenya.TreeActivity;
 import com.example.teamenvironmentkenya.models.Tree;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.io.Serializable;
 import java.util.List;
@@ -46,11 +48,11 @@ public class TreeRecAdapter extends RecyclerView.Adapter<TreeRecAdapter.MyHolder
 
     public class MyHolder extends RecyclerView.ViewHolder {
         TextView name, description, location;
-        View image;
+        ShapeableImageView image;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            description = itemView.findViewById(R.id.description);
+            description = itemView.findViewById(R.id.located_at);
             image = itemView.findViewById(R.id.image);
             int position = getLayoutPosition();
 
@@ -67,7 +69,8 @@ public class TreeRecAdapter extends RecyclerView.Adapter<TreeRecAdapter.MyHolder
 
         public void setData(Tree tree){
             name.setText(tree.getName());
-            description.setText(tree.getDescription());
+            description.setText(tree.getSpecies());
+            image.setImageResource(tree.getImage());
         }
 
     }
