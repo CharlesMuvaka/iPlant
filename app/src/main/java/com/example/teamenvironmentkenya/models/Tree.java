@@ -18,12 +18,22 @@ public class Tree implements Serializable {
     private int ownerId;
     @ColumnInfo(name = "description")
     private String description;
+    @ColumnInfo(name = "image")
+    private int image;
 
     public Tree(){}
 
     public Tree(String name, String species){
         this.name = name;
         this.species = species;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public int getId() {
