@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/frameLayout2"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ShopActivity">
+
+<!-- TODO: Update blank fragment layout -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cont1"
+    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_design"
+    android:backgroundTint="@color/dark_green"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/white"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="click on the below items to read more and get more information"
+        app:layout_constraintTop_toTopOf="@id/image2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/image2"
+        app:layout_constraintBottom_toTopOf="@id/search"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/image2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+         app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/moving"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/search"/>
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:queryHint="Search seedling"
+        android:background="@drawable/layout_design"
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toBottomOf="@id/image2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="store locations"
+        app:layout_constraintTop_toBottomOf="@id/cont1"
+        app:layout_constraintRight_toLeftOf="@id/ship"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <Button
+        android:id="@+id/ship"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="shipping"
+        app:layout_constraintTop_toTopOf="@id/store"
+        app:layout_constraintLeft_toRightOf="@id/store"
+        app:layout_constraintRight_toLeftOf="@id/returns"
+        app:layout_constraintBottom_toBottomOf="@id/store"/>
+
+    <Button
+        android:id="@+id/returns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="returns"
+        app:layout_constraintLeft_toRightOf="@id/ship"
+        app:layout_constraintTop_toTopOf="@id/ship"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toBottomOf="@id/store"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_green"
+        app:menu="@menu/bottom_menu"
+        app:itemTextColor="@color/light_green"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/light_green"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
