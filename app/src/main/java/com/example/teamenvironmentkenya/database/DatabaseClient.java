@@ -9,11 +9,12 @@ import androidx.room.RoomDatabase;
 import com.example.teamenvironmentkenya.dao.*;
 import com.example.teamenvironmentkenya.models.*;
 
-@Database(entities = {Tree.class, User.class, Vendor.class},version = 4)
+@Database(entities = {Tree.class, User.class, Vendor.class, Order.class},version = 1)
 public abstract class DatabaseClient extends RoomDatabase {
     public abstract TreeDao TreeDao();
     public abstract UserDao UserDao();
     public abstract VendorDao VendorDao();
+    public abstract OrderDao OrderDao();
 
     public static DatabaseClient instance;
 
