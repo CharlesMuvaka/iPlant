@@ -1,5 +1,6 @@
 package com.example.teamenvironmentkenya.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,9 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.teamenvironmentkenya.MainActivity;
 import com.example.teamenvironmentkenya.R;
 import com.example.teamenvironmentkenya.databinding.FragmentTreeBinding;
 import com.example.teamenvironmentkenya.models.Tree;
+
+import java.util.Objects;
 
 public class TreeFragment extends Fragment implements View.OnClickListener{
     private Tree tree;
@@ -47,11 +51,15 @@ public class TreeFragment extends Fragment implements View.OnClickListener{
         bind.buy.setOnClickListener(this::onClick);
         bind.shipping.setOnClickListener(this::onClick);
         bind.submit.setOnClickListener(this::onClick);
+        bind.back.setOnClickListener(this::onClick);
         return bind.getRoot();
     }
 
     @Override
     public void onClick(View view) {
+        if (view == bind.back){
+            requireContext().startActivity(new Intent(getContext(), MainActivity.class));
+        }
         Toast.makeText(getContext(), "Coming soon, wait and relax", Toast.LENGTH_SHORT).show();
     }
 }
