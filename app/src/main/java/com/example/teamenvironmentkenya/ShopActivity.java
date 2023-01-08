@@ -39,7 +39,6 @@ public class ShopActivity extends AppCompatActivity {
         bind.recView.setLayoutManager(new LinearLayoutManager(this));
         bind.recView.setHasFixedSize(true);
 
-        setNavigation(bind.bottom);
 
     }
     public void setNavigation(BottomNavigationView bottom){
