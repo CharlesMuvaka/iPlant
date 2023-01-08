@@ -29,9 +29,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding bind;
-    private VendorRecAdapter adapter;
-    private List<Vendor> allVendors;
-    private DatabaseClient client;
     private SharedPreferences pref;
 
     @Override
@@ -40,20 +37,11 @@ public class MainActivity extends AppCompatActivity {
         bind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
-        client = DatabaseClient.getInstance(this);
-        allVendors = new ArrayList<>();
-        allVendors = client.VendorDao().getAllVendors();
-
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        adapter = new VendorRecAdapter( allVendors, this);
         String name = pref.getString(Constants.USER_Name, null);
-
 
         bind.search1.setQueryHint("Search vendor");
         bind.vendors.setText("Welcome " + name + "!!");
-//        bind.myRecView.setAdapter(adapter);
-//        bind.myRecView.setLayoutManager(new LinearLayoutManager(this));
-//        bind.myRecView.setHasFixedSize(true);
 
         bind.image3.setOnClickListener(view -> bind.drawer.openDrawer(GravityCompat.START));
         bind.navView.bringToFront();
