@@ -41,7 +41,6 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
 
 
-        setNavigation(bind.bottom);
     }
     public void setNavigation(BottomNavigationView bottom){
         bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
