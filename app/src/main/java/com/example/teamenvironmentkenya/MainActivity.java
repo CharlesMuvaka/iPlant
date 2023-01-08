@@ -3,6 +3,9 @@ package com.example.teamenvironmentkenya;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
@@ -48,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         bind.search1.setQueryHint("Search vendor");
         bind.vendors.setText("Welcome " + name + "!!");
-        bind.myRecView.setAdapter(adapter);
-        bind.myRecView.setLayoutManager(new LinearLayoutManager(this));
-        bind.myRecView.setHasFixedSize(true);
+//        bind.myRecView.setAdapter(adapter);
+//        bind.myRecView.setLayoutManager(new LinearLayoutManager(this));
+//        bind.myRecView.setHasFixedSize(true);
 
         bind.image3.setOnClickListener(view -> bind.drawer.openDrawer(GravityCompat.START));
         bind.navView.bringToFront();
@@ -78,30 +81,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    public void setNavigation(BottomNavigationView bottom){
-        bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.home:
-                        return true;
-                    case R.id.shop:
-                        startActivity(new Intent(MainActivity.this, ShopActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.history:
-                        startActivity(new Intent(MainActivity.this, CustomerOrderActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.settings:
-                        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
+    public void replaceFragment(Fragment fragment){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(bind.frameLayout.getId(), fragment);
+        transaction.commit();
     }
 }
