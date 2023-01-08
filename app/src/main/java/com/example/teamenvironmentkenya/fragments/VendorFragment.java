@@ -1,5 +1,6 @@
 package com.example.teamenvironmentkenya.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,11 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.teamenvironmentkenya.MainActivity;
 import com.example.teamenvironmentkenya.R;
 import com.example.teamenvironmentkenya.databinding.FragmentVendorBinding;
 import com.example.teamenvironmentkenya.models.Vendor;
 
-public class VendorFragment extends Fragment {
+public class VendorFragment extends Fragment implements View.OnClickListener {
     private Vendor vendor;
     private FragmentVendorBinding bind;
 
@@ -46,7 +48,16 @@ public class VendorFragment extends Fragment {
         bind.vendorEmail.setText("Email: " + vendor.getUserEmail());
         bind.vendorLocation.setText("Location: "+ vendor.getLocation());
         bind.vendorPhone.setText("Phone: "+ vendor.getPhoneNumber());
+
+        bind.back.setOnClickListener(this::onClick);
 //        bind.vendorWebsite.setText("Website: " + vendor.);
         return bind.getRoot();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == bind.back){
+            requireContext().startActivity(new Intent(getContext(), MainActivity.class));
+        }
     }
 }
