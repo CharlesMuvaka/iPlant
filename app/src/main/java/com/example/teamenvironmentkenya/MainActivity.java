@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.example.teamenvironmentkenya.adapters.recyclerViews.VendorRecAdapter;
 import com.example.teamenvironmentkenya.database.DatabaseClient;
 import com.example.teamenvironmentkenya.databinding.ActivityMainBinding;
+import com.example.teamenvironmentkenya.fragments.ShopFragment;
+import com.example.teamenvironmentkenya.fragments.VendorsFragment;
 import com.example.teamenvironmentkenya.models.Constants;
 import com.example.teamenvironmentkenya.models.Vendor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -52,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
                 bind.drawer.closeDrawer(GravityCompat.START);
                 switch(item.getItemId()){
                     case R.id.home:
+                        replaceFragment(new VendorsFragment());
                         break;
                     case R.id.shop:
-                        startActivity(new Intent(MainActivity.this, ShopActivity.class));
+                        replaceFragment(new ShopFragment());
                         break;
                         case R.id.history:
                         startActivity(new Intent(MainActivity.this, CustomerOrderActivity.class));
