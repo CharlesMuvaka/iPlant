@@ -81,30 +81,18 @@
             app:layout_constraintTop_toBottomOf="@id/slogan"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/locat"
 
             />
 
-        <TextView
-            android:id="@+id/locat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vendors in: Nairobi"
-            android:textSize="20sp"
-            android:layout_margin="4dp"
-            android:textStyle="bold"
-            android:textColor="@color/dark_green"
-            app:layout_constraintStart_toStartOf="@id/search1"
-            app:layout_constraintTop_toBottomOf="@id/search1"
-            app:layout_constraintBottom_toTopOf="@id/myRecView"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/myRecView"
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/locat"
+            app:layout_constraintTop_toBottomOf="@id/search1"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>
