@@ -2,6 +2,7 @@ package com.example.teamenvironmentkenya;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.teamenvironmentkenya.adapters.recyclerViews.VendorRecAdapter;
 import com.example.teamenvironmentkenya.database.DatabaseClient;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         bind.myRecView.setAdapter(adapter);
         bind.myRecView.setLayoutManager(new LinearLayoutManager(this));
         bind.myRecView.setHasFixedSize(true);
+
+        bind.image3.setOnClickListener(view -> bind.drawer.openDrawer(GravityCompat.START));
 
         setNavigation(bind.bottom);
     }
