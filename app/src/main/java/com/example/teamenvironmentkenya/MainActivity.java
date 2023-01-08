@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         bind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(bind.frameLayout.getId(), new VendorsFragment());
+        transaction.commit();
+
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         String name = pref.getString(Constants.USER_Name, null);
 
@@ -76,6 +81,15 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(bind.frameLayout.getId(), fragment);
+        transaction.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(bind.frameLayout.getId(), new VendorsFragment());
         transaction.commit();
     }
 }
