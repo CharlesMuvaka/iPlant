@@ -43,11 +43,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if(view == bind.submit){
-            validateUserData();
-            Intent intent = new Intent(this, ShopActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             Toast.makeText(this, "successfully logged in", Toast.LENGTH_SHORT).show();
             startActivity(intent);
-        }else if(view == bind.forgot){
+
+        }
+        else if(view == bind.forgot){
             Toast.makeText(this, "functionality coming soon", Toast.LENGTH_SHORT).show();
         }else{
             startActivity(new Intent(this, SignUpActivity.class));
@@ -63,10 +64,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String userName = bind.userName.getEditText().getText().toString().trim();
         String userPassword = bind.userPassword.getEditText().getText().toString().trim();
 
-        for (int i = 0; i < allUsers.size(); i++) {
-            if (allUsers.get(i).getName().equals(userName)){
-                if (allUsers.get(i).getPassword().equals(userPassword)){
-
+        for (User user:allUsers) {
+            if (user.getName().equals(userName)){
+                if (user.getPassword().equals(userPassword)){
+                    Intent intent = new Intent(this, ShopActivity.class);
+                    Toast.makeText(this, "successfully logged in", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
                 }else {
                     bind.userPassword.setError("password doesn't match");
                 }
@@ -74,7 +77,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 bind.userName.setError("User doesn't exist");
                 bind.userName.setErrorEnabled(true);
             }
-            break;
         }
 
     }
