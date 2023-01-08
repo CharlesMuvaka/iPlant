@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.teamenvironmentkenya.adapters.recyclerViews.VendorRecAdapter;
 import com.example.teamenvironmentkenya.database.DatabaseClient;
@@ -18,6 +19,7 @@ import com.example.teamenvironmentkenya.databinding.ActivityMainBinding;
 import com.example.teamenvironmentkenya.models.Constants;
 import com.example.teamenvironmentkenya.models.Vendor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +53,30 @@ public class MainActivity extends AppCompatActivity {
         bind.myRecView.setHasFixedSize(true);
 
         bind.image3.setOnClickListener(view -> bind.drawer.openDrawer(GravityCompat.START));
+        bind.navView.bringToFront();
+        bind.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                bind.drawer.closeDrawer(GravityCompat.START);
+                switch(item.getItemId()){
+                    case R.id.home:
+                        break;
+                    case R.id.shop:
+                        startActivity(new Intent(MainActivity.this, ShopActivity.class));
+                        break;
+                        case R.id.history:
+                        startActivity(new Intent(MainActivity.this, CustomerOrderActivity.class));
+                        break;
+                    case R.id.settings:
+                        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
 
-        setNavigation(bind.bottom);
     }
 
     public void setNavigation(BottomNavigationView bottom){
