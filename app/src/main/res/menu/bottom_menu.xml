@@ -15,11 +15,11 @@
             android:title="History"/>
         <item
             android:id="@+id/events"
-            android:icon="@drawable/ic_history"
+            android:icon="@drawable/ic_event"
             android:title="Events"/>
         <item
             android:id="@+id/videos"
-            android:icon="@drawable/ic_history"
+            android:icon="@drawable/ic_video"
             android:title="Videos"/>
         <item
             android:id="@+id/settings"
@@ -31,12 +31,15 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item android:title="Growth track"
+                    android:icon="@drawable/ic_graph"
                     android:id="@+id/track"/>
 
                 <item android:id="@+id/knowledge"
+                    android:icon="@drawable/ic_book"
                     android:title="Knowledge Base"/>
 
                 <item android:title="Shipping"
+                    android:icon="@drawable/ic_shipping"
                     android:id="@+id/shipping"/>
             </group>
         </menu>
@@ -46,8 +49,10 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item android:id="@+id/share"
+                    android:icon="@drawable/ic_share"
                     android:title="Share"/>
                 <item android:title="Logout"
+                    android:icon="@drawable/ic_reply"
                     android:id="@+id/logout"/>
             </group>
         </menu>
