@@ -7,21 +7,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.teamenvironmentkenya.adapters.recyclerViews.TreeRecAdapter;
 import com.example.teamenvironmentkenya.database.DatabaseClient;
 import com.example.teamenvironmentkenya.databinding.ActivityShopBinding;
+import com.example.teamenvironmentkenya.databinding.BottomSheetBinding;
 import com.example.teamenvironmentkenya.models.Tree;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivityShopBinding bind;
     private List<Tree> allTrees;
     private TreeRecAdapter adapter;
     private DatabaseClient client;
+    private BottomSheetDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class ShopActivity extends AppCompatActivity {
         bind = ActivityShopBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
+        dialog = new BottomSheetDialog(this);
         allTrees = new ArrayList<>();
         client = DatabaseClient.getInstance(this);
 
@@ -38,9 +43,20 @@ public class ShopActivity extends AppCompatActivity {
         bind.recView.setAdapter(adapter);
         bind.recView.setLayoutManager(new LinearLayoutManager(this));
         bind.recView.setHasFixedSize(true);
+        createDialog();
+        bind.ship.setOnClickListener(this);
 
 
     }
+
+    private void createDialog() {
+        BottomSheetBinding binding = BottomSheetBinding.inflate(getLayoutInflater());
+        binding.recView.setAdapter(adapter);
+        binding.recView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recView.setHasFixedSize(true);
+        dialog.setContentView(binding.getRoot());
+    }
+
     public void setNavigation(BottomNavigationView bottom){
         bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -67,4 +83,10 @@ public class ShopActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onClick(View view) {
+        if (bind.ship == view){
+            dialog.show();
+        }
+    }
 }
